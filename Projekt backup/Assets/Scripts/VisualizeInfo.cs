@@ -15,7 +15,7 @@ public class VisualizeInfo : MonoBehaviour
 
     public void showGroup(Group newgroup)
     {
-        if (currentGroup.invTable.Length <= 1) ;
+        if (currentGroup.invTable.Length <= 1);
         {
             //PUSH OLD GROUP
             databaseObject.GetComponent<DatabaseHandler>().updateitems(currentGroup.inventory, currentGroup.invTable);

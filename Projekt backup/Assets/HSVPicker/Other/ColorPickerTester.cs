@@ -5,9 +5,9 @@ public class ColorPickerTester : MonoBehaviour
 {
 
     public new Renderer renderer;
-    public ColorPicker picker;
+    public static ColorPicker picker;
 
-    public Color Color = Color.red;
+    public static Color Color = Color.red;
 
 	// Use this for initialization
 	void Start () 

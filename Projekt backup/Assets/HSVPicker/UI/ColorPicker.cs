@@ -34,6 +34,8 @@ public class ColorPicker : MonoBehaviour
             _blue = value.b;
             _alpha = value.a;
 
+
+
             RGBChanged();
             
             SendChangedEvent();
