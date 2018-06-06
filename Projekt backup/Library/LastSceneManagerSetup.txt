@@ -1,25 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tema.unity
+- path: Assets/Scenes/Gruppe Inventory.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/Scenes/Achivement.unity
-  isLoaded: 1
-  isActive: 0
-- path: Assets/Scenes/Avatar.unity
-  isLoaded: 1
-  isActive: 0
-- path: Assets/Scenes/Elever.unity
-  isLoaded: 1
-  isActive: 0
-- path: Assets/Scenes/Events.unity
-  isLoaded: 1
-  isActive: 0
-- path: Assets/Scenes/Points.unity
-  isLoaded: 1
-  isActive: 0
-- path: Assets/Scenes/Scenarie oversigt.unity
-  isLoaded: 1
-  isActive: 0
-- path: Assets/Scenes/Spil verden.unity
-  isLoaded: 1
-  isActive: 0
