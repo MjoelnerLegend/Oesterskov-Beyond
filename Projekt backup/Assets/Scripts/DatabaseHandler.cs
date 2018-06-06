@@ -18,8 +18,9 @@ public class DatabaseHandler : MonoBehaviour
     public static List<Group> groups;
     public static List<Item> itemDict;
 
-    public List<Student> test1;
-    public List<Group> test2;
+    public List<Student> testStudents;
+    public List<Group> testGroup;
+    public List<Item> testItem;
 
     public GameObject groupgo;
     public GameObject infogo;
@@ -27,8 +28,9 @@ public class DatabaseHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        test1 = students;
-        test2 = groups;
+        testStudents = students;
+        testGroup = groups;
+        testItem = DatabaseHandler.itemDict;
     }
 
     private void Start()
@@ -165,7 +167,8 @@ public class DatabaseHandler : MonoBehaviour
 
             foreach (Item t in inventory)
             {
-                cmd.CommandText = "INSERT INTO " + table + " (`ItemID`, `Amount`) VALUES (" + t.id + "," + t.id + ")"; //skriv command
+                cmd.CommandText = "INSERT INTO " + table + "(`ItemID`, `Amount`) VALUES ("+"'"+ t.id +"'"+ " , " + t.amount + ")"; //skriv command
+                Debug.Log(cmd.CommandText);
                 var e = cmd.ExecuteNonQuery();//execute commnand       
             }
 
@@ -174,6 +177,7 @@ public class DatabaseHandler : MonoBehaviour
         catch (OdbcException caught)
         {//Error handling
             Debug.Log(caught.Message); //print the odbc error
+            Debug.Log(table);
         }
     }
 
@@ -204,6 +208,7 @@ public class DatabaseHandler : MonoBehaviour
         {//Error handling
             Debug.Log(caught.Message); //print the odbc error
         }
+        updateItemDict();
         return inventory;
     }
 
@@ -217,14 +222,14 @@ public class DatabaseHandler : MonoBehaviour
             conn.Open(); //forsøg at connect til databasen (dsn)
             cmd = new OdbcCommand(); //lav en ny sql commando
             cmd.Connection = conn; //Specificer hvilken forbindelse den skal bruge
-            cmd.CommandText = "SELECT * FROM `ìtems`";//skriv command 
+            cmd.CommandText = "SELECT * FROM `items`";//skriv command 
             data = cmd.ExecuteReader();//execute commnand
 
             //Handle Data
             while (data.Read())
             {
                 Item newItem = new Item();
-                newItem.id = data["ItemID"].ToString();
+                newItem.id = data["Navn"].ToString();
                 newItem.amount = 0;
                 dict.Add(newItem);
             }

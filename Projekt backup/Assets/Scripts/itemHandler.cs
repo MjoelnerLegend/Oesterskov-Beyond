@@ -13,7 +13,7 @@ public class itemHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        group = this.transform.gameObject.GetComponent<VisualizeInfo>().currentGroup;
+        group = this.transform.parent.parent.gameObject.GetComponent<VisualizeInfo>().currentGroup;
     }
 
     public void plus()

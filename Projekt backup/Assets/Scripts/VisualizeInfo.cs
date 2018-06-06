@@ -15,7 +15,7 @@ public class VisualizeInfo : MonoBehaviour
 
     public void showGroup(Group newgroup)
     {
-        if (currentGroup.invTable.Length <= 1);
+        if (currentGroup.invTable.Length >= 1);
         {
             //PUSH OLD GROUP
             databaseObject.GetComponent<DatabaseHandler>().updateitems(currentGroup.inventory, currentGroup.invTable);
@@ -63,22 +63,25 @@ public class VisualizeInfo : MonoBehaviour
 
     public void addItem(string item)
     {
+        bool tmp = false;
         foreach (Item t in currentGroup.inventory)
         {
             if (t.id == item)
             {
                 t.amount += 1;
+                tmp = true;
             }
-            else
+
+        }
+        if(!tmp)
             {
-                List<Item> temp = DatabaseHandler.itemDict;
-                foreach (Item g in temp)
+            List<Item> temp = DatabaseHandler.itemDict;
+            foreach (Item g in temp)
+            {
+                if (g.id == item)
                 {
-                    if (g.id == item)
-                    {
-                        Item nt = g;
-                        currentGroup.inventory.Add(nt);
-                    }
+                    Item nt = g;
+                    currentGroup.inventory.Add(nt);
                 }
             }
         }
